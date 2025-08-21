@@ -1,0 +1,161 @@
+
+Gmail Manager (Version 1)
+
+⚠️ **Updated version of this app is coming!**
+Version 2 will include **advanced filtering**, **attachment management**, **improved UI**, and **multi-user support**.
+
+**Gmail Manager** is a Gmail management and email downloader web app built with **Python** and **Flask**.
+
+This app allows you to:
+
+* 📥 Download your last 10 emails from Gmail
+* ⏱ Start **real-time email downloading**
+* 🗑 Delete emails from **Inbox** or **All Mail** using **app passwords**
+* 📊 Visualize Gmail storage usage with a **dynamic bar**
+* 📰 View recently downloaded emails in a **scrolling ticker**
+
+---
+
+✨ Features
+
+1. **OAuth 2.0 Integration** – Secure login with your Google account
+2. **Email Downloader** – Download last 10 emails or continuously poll for new emails
+3. **Email Deletion** – Delete oldest/newest emails from Inbox or automatically delete from All Mail when storage is high
+4. **Storage Visualization** – Dynamic bar displaying used vs available Gmail storage
+5. **Recent Emails Ticker** – Scrolls the latest downloaded email subjects
+6. **Responsive Web Interface** – Clean and animated UI compatible with modern browsers
+
+---
+
+🛠 Setup Instructions
+
+Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/gmail-manager.git
+cd gmail-manager
+```
+
+Step 2: Install Dependencies
+
+Make sure **Python 3.x** is installed. Then run:
+
+
+pip install flask flask_socketio google-auth google-auth-oauthlib google-api-python-client
+```
+
+Step 3: Create Google Cloud Project
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Click **Create Project**, give it a name, and click **Create**
+3. Note the **Project ID**
+
+Step 4: Enable APIs
+
+1. Navigate to **APIs & Services → Library**
+2. Enable:
+
+   * **Gmail API**
+   * **Google Drive API**
+
+ Step 5: Create OAuth Credentials
+
+1. Go to **APIs & Services → Credentials → Create Credentials → OAuth Client ID**
+2. Choose **Desktop App**
+3. Download `credentials.json` and place it in your project folder
+4. Update the `CRED_FILE` path in `app.py`:
+
+```python
+CRED_FILE = r"YOUR_SYSTEM_PATH_HERE\credentials.json"
+```
+
+Step 6: Configure Redirect URI
+
+Set redirect URI to:
+
+```
+http://localhost:8000/oauth2callback
+```
+
+Step 7: Generate App Password (For Email Deletion)
+
+1. Visit [Google App Passwords](https://myaccount.google.com/apppasswords)
+2. Select **Mail → Other → Enter name → Generate**
+3. Copy the **16-character password**
+
+Step 8: Folder Setup
+
+1. Create a folder to store downloaded emails
+2. Update `EMAILS_DIR` in `app.py`:
+
+```python
+EMAILS_DIR = r"YOUR_SYSTEM_PATH_HERE\emails"
+```
+
+Step 9: Run the Flask App
+
+```bash
+python app.py
+```
+
+* Open `http://localhost:8000` in your browser
+* Click **Login with Google**
+
+Step 10: Using the Dashboard
+
+**Download Emails**
+
+* Click **Download Last 10 Emails**
+* Click **Start Real-time Download**
+
+**Delete Emails**
+
+* Inbox deletion form deletes **oldest** or **newest** emails
+* High storage enables deletion from **All Mail** automatically
+
+**Storage Visualization**
+
+* Dynamic bar shows **used vs total Gmail storage**
+
+**Email Ticker**
+
+* Displays **last 10 downloaded emails**
+
+Step 11: Troubleshooting
+
+* Ensure `credentials.json` path is correct
+* Use **Chrome** or **Firefox** for OAuth
+* Ensure `TOKEN_FILE` path is writable
+* Ensure `EMAILS_DIR` exists
+* Check **network/firewall** if emails aren’t downloading
+
+---
+
+ 🚀 Notes for Version 2
+
+* Attachment download management
+* Filtering and search options
+* Improved responsive UI
+* Multi-user support
+
+---
+
+🔒 Sensitive Information Reminder
+
+Do **not** push `credentials.json`, `token.pkl`, or downloaded emails to GitHub. Use system paths or placeholders.
+
+---
+
+ 📝 License
+
+MIT License – Free to use and modify
+
+---
+
+ 👤 Author
+
+**Boya Bhavani Prasad**
+Message me at  **[cskbunny@gmail.com](mailto:cskbunny@gmail.com) for any clarifications**
+
+---
+
